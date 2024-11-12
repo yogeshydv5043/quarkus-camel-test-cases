@@ -19,11 +19,10 @@ public class InQueueRoute extends RouteBuilder {
                 .log(LoggingLevel.INFO, "sending data to queue : ${body}")
                 .process(exchange -> {
                     String data = exchange.getIn().getBody(String.class);
-                      String file = data + LocalDate.now().toString();
+
                     exchange.getIn().setBody(data);
                 })
                 .to("amqp:queue:msgQueue");
-//                .to("mock:msgQueue");
     }
 
 }

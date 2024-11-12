@@ -10,6 +10,6 @@ public class OutQueue extends RouteBuilder {
     public void configure() throws Exception {
 
         from("amqp:queue:msgQueue")
-                .log(LoggingLevel.INFO, "this is queue Data : ${body}");
+                .log(LoggingLevel.INFO, "Received queue  Data  : ${body}");
     }
 }
