@@ -28,7 +28,7 @@ public class OutQueueTest {
         camelContext.addRoutes(new OutQueue() {
             @Override
             public void configure() throws Exception {
-                from("amqp:queue:sendDataRoute")
+                from("amqp:queue:msgQueueTest")
                         .log("sending data to queue : ${body}")
                         .to("mock:log");
             }
@@ -45,7 +45,7 @@ public class OutQueueTest {
         mockQueue.expectedBodiesReceived(SendData);
 
         // Send test data to the "amqp:queue:sendDataRoute" endpoint
-        producerTemplate.sendBody("amqp:queue:sendDataRoute", SendData);
+        producerTemplate.sendBody("amqp:queue:msgQueueTest", SendData);
         System.out.println("Sending Data : " + SendData);
 
         // Assert that the mock endpoint received the message as expected

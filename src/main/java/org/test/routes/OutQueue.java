@@ -6,10 +6,13 @@ import org.apache.camel.builder.RouteBuilder;
 
 @ApplicationScoped
 public class OutQueue extends RouteBuilder {
+
+
     @Override
     public void configure() throws Exception {
 
         from("amqp:queue:msgQueue")
-                .log(LoggingLevel.INFO, "Received queue  Data  : ${body}");
+                .log(LoggingLevel.INFO, "Received queue  Data  : ${body}")
+                .to("mock:log: Received queue Data : ${body}");
     }
 }

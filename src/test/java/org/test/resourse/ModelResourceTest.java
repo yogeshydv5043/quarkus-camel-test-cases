@@ -14,10 +14,7 @@ import static org.hamcrest.Matchers.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ModelResourceTest {
 
-//    @BeforeAll
-//    static void setup() {
-//        RestAssured.basePath = "/model";
-//    }
+
 
         @Order(1)
     @Test
